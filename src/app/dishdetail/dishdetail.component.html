@@ -1,0 +1,67 @@
+<div class="container" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column"
+    fxLayoutAlign.gt-md="space-around center" fxLayoutGap="10px" fxLayoutGap.xs="0">
+    <div fxFlex="40">
+        <div fxFlex *ngIf="dish">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>
+                        <h3>{{dish.name | uppercase}}</h3>
+                    </mat-card-title>
+                </mat-card-header>
+                <img mat-card-image src={{dish.image}} alt={{dish.name}}>
+                <mat-card-content>
+                    <p>
+                        {{dish.description}}
+                    </p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-button>LIKE</button>
+                    <button mat-button>SHARE</button>
+
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+
+    <div class="test" fxFlex="40" fxFlexAlign="stretch">
+        <div *ngIf="dish">
+            <h2><strong>Comments</strong></h2>
+            <mat-list>
+                <mat-list-item>
+                    <p matLine>{{comm1.comment}}</p>
+                    <p matLine>{{comm1.rating}}<span> Stars</span></p>
+                    <p matLine>-- {{comm1.author}}<span> {{comm1.date | date }}</span></p>
+
+                </mat-list-item>
+                <mat-list-item>
+                    <p matLine>{{comm2.comment}}</p>
+                    <p matLine>{{comm2.rating}}<span> Stars</span></p>
+
+                    <p matLine>-- {{comm2.author}}<span> {{comm2.date | date }}</span> </p>
+                </mat-list-item>
+                <mat-list-item>
+                    <p matLine>{{comm3.comment}}</p>
+                    <p matLine>{{comm3.rating}}<span> Stars</span></p>
+
+                    <p matLine>-- {{comm3.author}}<span> {{comm3.date | date }}</span> </p>
+                </mat-list-item>
+                <mat-list-item>
+                    <p matLine>{{comm4.comment}}</p>
+                    <p matLine>{{comm4.rating}}<span> Stars</span></p>
+
+                    <p matLine>-- {{comm4.author}}<span> {{comm4.date | date }}</span></p>
+                </mat-list-item>
+                <mat-list-item>
+                    <p matLine>{{comm5.comment}}</p>
+                    <p matLine>{{comm5.rating}}<span> Stars</span></p>
+
+                    <p matLine>-- {{comm5.author}}<span> {{comm5.date | date }}</span> </p>
+                </mat-list-item>
+            </mat-list>
+
+        </div>
+    </div>
+    <div fxFlex="20">
+
+    </div>
+</div>

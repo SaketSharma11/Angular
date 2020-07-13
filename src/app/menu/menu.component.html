@@ -17,24 +17,8 @@
             </mat-grid-tile>
         </mat-grid-list>
     </div>
-    <div fxFlex *ngIf="selecteddish">
-        <mat-card>
-            <mat-card-header>
-                <mat-card-title>
-                    <h3>{{selecteddish.name | uppercase}}</h3>
-                </mat-card-title>
-            </mat-card-header>
-            <img mat-card-image src={{selecteddish.image}} alt={{selecteddish.name}}>
-            <mat-card-content>
-                <p>
-                    {{selecteddish.description}}
-                </p>
-            </mat-card-content>
-            <mat-card-actions>
-                <button mat-button>LIKE</button>
-                <button mat-button>SHARE</button>
 
-            </mat-card-actions>
-        </mat-card>
-    </div>
 </div>
+<app-dishdetail>
+
+</app-dishdetail>
