@@ -28,34 +28,30 @@
             <h2><strong>Comments</strong></h2>
             <mat-list>
                 <mat-list-item>
-                    <p matLine>{{comm1.comment}}</p>
-                    <p matLine>{{comm1.rating}}<span> Stars</span></p>
-                    <p matLine>-- {{comm1.author}}<span> {{comm1.date | date }}</span></p>
+                    <p matLine>{{dish.comments[0].comment}}</p>
+                    <p matLine>{{dish.comments[0].rating}}<span> Stars</span></p>
+                    <p matLine>-- {{dish.comments[0].author}}<span> {{dish.comments[0].date | date }}</span></p>
 
                 </mat-list-item>
                 <mat-list-item>
-                    <p matLine>{{comm2.comment}}</p>
-                    <p matLine>{{comm2.rating}}<span> Stars</span></p>
-
-                    <p matLine>-- {{comm2.author}}<span> {{comm2.date | date }}</span> </p>
+                    <p matLine>{{dish.comments[1].comment}}</p>
+                    <p matLine>{{dish.comments[1].rating}}<span> Stars</span></p>
+                    <p matLine>-- {{dish.comments[1].author}}<span> {{dish.comments[1].date | date }}</span></p>
                 </mat-list-item>
                 <mat-list-item>
-                    <p matLine>{{comm3.comment}}</p>
-                    <p matLine>{{comm3.rating}}<span> Stars</span></p>
-
-                    <p matLine>-- {{comm3.author}}<span> {{comm3.date | date }}</span> </p>
+                    <p matLine>{{dish.comments[2].comment}}</p>
+                    <p matLine>{{dish.comments[2].rating}}<span> Stars</span></p>
+                    <p matLine>-- {{dish.comments[2].author}}<span> {{dish.comments[2].date | date }}</span></p>
                 </mat-list-item>
                 <mat-list-item>
-                    <p matLine>{{comm4.comment}}</p>
-                    <p matLine>{{comm4.rating}}<span> Stars</span></p>
-
-                    <p matLine>-- {{comm4.author}}<span> {{comm4.date | date }}</span></p>
+                    <p matLine>{{dish.comments[3].comment}}</p>
+                    <p matLine>{{dish.comments[3].rating}}<span> Stars</span></p>
+                    <p matLine>-- {{dish.comments[3].author}}<span> {{dish.comments[3].date | date }}</span></p>
                 </mat-list-item>
                 <mat-list-item>
-                    <p matLine>{{comm5.comment}}</p>
-                    <p matLine>{{comm5.rating}}<span> Stars</span></p>
-
-                    <p matLine>-- {{comm5.author}}<span> {{comm5.date | date }}</span> </p>
+                    <p matLine>{{dish.comments[4].comment}}</p>
+                    <p matLine>{{dish.comments[4].rating}}<span> Stars</span></p>
+                    <p matLine>-- {{dish.comments[4].author}}<span> {{dish.comments[4].date | date }}</span></p>
                 </mat-list-item>
             </mat-list>
 
