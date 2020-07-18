@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Route, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
