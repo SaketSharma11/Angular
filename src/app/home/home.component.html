@@ -1,7 +1,7 @@
-<div class="container" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column"
+<div class="container mat-card" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column"
     fxLayoutAlign.gt-md="space-around center" fxLayoutGap="10px">
 
-    <mat-card *ngIf="dish" fxFlex>
+    <mat-card *ngIf="dish" fxFlex="35%">
         <mat-card-header>
             <div mat-card-avatar></div>
             <mat-card-title>
@@ -12,10 +12,11 @@
         <mat-card-content>
             <p>{{dish.description}}
             </p>
+
         </mat-card-content>
     </mat-card>
 
-    <mat-card *ngIf="promotion" fxFlex>
+    <mat-card *ngIf="promotion" fxFlex="35%">
         <mat-card-header>
             <div mat-card-avatar></div>
             <mat-card-title>
@@ -26,6 +27,19 @@
         <mat-card-content>
             <p>{{promotion.description}}
             </p>
+        </mat-card-content>
+    </mat-card>
+    <mat-card *ngIf="leader" fxflex="30%">
+        <mat-card-header>
+            <div mat-card-avatar></div>
+            <mat-card-title>
+                <h3>{{leader.name | uppercase}}</h3>
+            </mat-card-title>
+        </mat-card-header>
+        <img mat-card-image src={{leader.image}} alt={{leader.name}}>
+        <mat-card-content>
+            <p>{{leader.designation}}</p>
+            <p>{{leader.description}}</p>
         </mat-card-content>
     </mat-card>
 
