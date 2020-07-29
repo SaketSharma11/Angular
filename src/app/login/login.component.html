@@ -9,14 +9,11 @@
     <mat-dialog-content>
         <p>
             <mat-form-field>
-
-
                 <input matInput placeholder="Username" type="text" [(ngModel)]="user.username" #username="ngModel"
                     name="username" required>
                 <mat-error *ngIf="username.errors?.required">Username is required</mat-error>
             </mat-form-field>
             <mat-form-field>
-
                 <input matInput placeholder="Password" type="password" [(ngModel)]="user.password" #password="ngModel"
                     name="password" required>
                 <mat-error *ngIf="password.errors?.required">Password is required</mat-error>
