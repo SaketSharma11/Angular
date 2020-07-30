@@ -8,14 +8,14 @@ import { PROMOTIONS } from '../shared/promotions';
 export class PromotionService {
 
   constructor() { }
-  getpromotions(): Promotion[] {
-    return PROMOTIONS;
+  getpromotions(): Promise<Promotion[]> {
+    return Promise.resolve(PROMOTIONS);
   }
-  getpromotion(id: string): Promotion {
-    return PROMOTIONS.filter((promo) => (promo.id === id))[0];
+  getpromotion(id: string): Promise<Promotion> {
+    return Promise.resolve(PROMOTIONS.filter((promo) => (promo.id === id))[0]);
   }
-  getfeaturedpromotion(): Promotion {
-    return PROMOTIONS.filter((promotion) => promotion.featured)[0];
+  getfeaturedpromotion(): Promise<Promotion> {
+    return Promise.resolve(PROMOTIONS.filter((promotion) => promotion.featured)[0]);
 
   }
 }

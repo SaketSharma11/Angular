@@ -6,14 +6,14 @@ import { DISHES } from '../shared/dishes';
 })
 export class DishService {
 
-  getDishes(): Dish[] {
-    return DISHES;
+  getDishes(): Promise<Dish[]> {
+    return Promise.resolve(DISHES);
   }
-  getdish(id: string): Dish {
-    return DISHES.filter((dish) => (dish.id === id))[0];
+  getdish(id: string): Promise<Dish> {
+    return Promise.resolve(DISHES.filter((dish) => (dish.id === id))[0]);
   }
-  getfeatureddish(): Dish {
-    return DISHES.filter((dish) => dish.featured)[0];
+  getfeatureddish(): Promise<Dish> {
+    return Promise.resolve(DISHES.filter((dish) => dish.featured)[0]);
   }
   constructor() { }
 }
