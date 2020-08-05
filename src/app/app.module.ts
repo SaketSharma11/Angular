@@ -30,6 +30,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { BarRatingModule } from 'ngx-bar-rating';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatDividerModule } from '@angular/material/divider';
+
 
 @NgModule({
   declarations: [
@@ -61,7 +65,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     ReactiveFormsModule,
     MatSlideToggleModule,
     MatSelectModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    BarRatingModule,
+    MatSliderModule,
+    MatDividerModule
 
 
   ],
