@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Dish } from '../shared/dish';
 import { Params, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
@@ -31,7 +31,7 @@ export class DishdetailComponent implements OnInit {
 
 
 
-  constructor(private fb: FormBuilder, private dishservice: DishService, private route: ActivatedRoute, private location: Location) {
+  constructor(private fb: FormBuilder, private dishservice: DishService, private route: ActivatedRoute, private location: Location, @Inject('BaseURL') private BaseURL) {
     this.createform();
 
 
@@ -82,7 +82,6 @@ export class DishdetailComponent implements OnInit {
         }
       }
     }
-
   }
 
   formatLabel(value: number) {

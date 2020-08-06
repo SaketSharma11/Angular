@@ -33,7 +33,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { BarRatingModule } from 'ngx-bar-rating';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatDividerModule } from '@angular/material/divider';
-
+import { HttpClientModule } from '@angular/common/http';
+import { baseURL } from './shared/baseurl';
 
 @NgModule({
   declarations: [
@@ -68,12 +69,13 @@ import { MatDividerModule } from '@angular/material/divider';
     MatProgressSpinnerModule,
     BarRatingModule,
     MatSliderModule,
-    MatDividerModule
+    MatDividerModule,
+    HttpClientModule
 
 
   ],
   entryComponents: [LoginComponent],
-  providers: [DishService, PromotionService, LeaderService],
+  providers: [DishService, PromotionService, LeaderService, { provide: 'BaseURL', useValue: baseURL }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
