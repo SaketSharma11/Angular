@@ -26,6 +26,7 @@ export class DishdetailComponent implements OnInit {
   rform: FormGroup;
   cmm: Comments;
   Dishes: Dish[];
+  errmsg: string;
 
 
 
@@ -111,7 +112,7 @@ export class DishdetailComponent implements OnInit {
 
 
     this.dishservice.getdishids().subscribe(dishids => this.dishIds = dishids);
-    this.route.params.pipe(switchMap((params: Params) => this.dishservice.getdish(params['id']))).subscribe(dish => { this.mydish = dish; this.setprevnext(dish.id); });
+    this.route.params.pipe(switchMap((params: Params) => this.dishservice.getdish(params['id']))).subscribe(dish => { this.mydish = dish; this.setprevnext(dish.id); }, emsg => this.errmsg = emsg);
   }
   setprevnext(dishid: string) {
     const index = this.dishIds.indexOf(dishid);

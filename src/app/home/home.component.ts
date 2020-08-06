@@ -15,12 +15,13 @@ import { LeaderService } from '../services/leader.service';
 })
 export class HomeComponent implements OnInit {
   dish: Dish;
+  disherrmsg: string;
   leader: Leader;
   promotion: Promotion;
   constructor(private dishservice: DishService, private promotionservice: PromotionService, private leaderservice: LeaderService, @Inject('BaseURL') private baseURL) { }
 
   ngOnInit(): void {
-    this.dishservice.getfeatureddish().subscribe(dish => this.dish = dish);
+    this.dishservice.getfeatureddish().subscribe(dish => this.dish = dish, emsg => this.disherrmsg = emsg);
     this.promotionservice.getfeaturedpromotion().subscribe(promotion => this.promotion = promotion);
     this.leaderservice.getleader().subscribe(leader => this.leader = leader);
   }
