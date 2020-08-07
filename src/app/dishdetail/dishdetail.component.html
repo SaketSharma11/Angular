@@ -48,47 +48,23 @@
         <div class="test" fxFlex="60%" *ngIf="mydish">
 
             <h2><strong>Comments</strong></h2>
-            <mat-list>
+            <mat-list *ngFor="let cm of mydish.comments">
                 <mat-list-item>
-                    <p matLine>{{mydish.comments[0].comment}}</p>
-                    <p matLine>{{mydish.comments[0].rating}}<span> Stars</span></p>
-                    <p matLine>-- {{mydish.comments[0].author}}<span> {{mydish.comments[0].date | date }}</span></p>
+                    <p matLine>{{cm.comment}}</p>
+                    <p matLine>{{cm.rating}}<span> Stars</span></p>
+                    <p matLine>-- {{cm.author}}<span> {{cm.date | date }}</span></p>
 
                 </mat-list-item>
-                <mat-list-item>
-                    <p matLine>{{mydish.comments[1].comment}}</p>
-                    <p matLine>{{mydish.comments[1].rating}}<span> Stars</span></p>
-                    <p matLine>-- {{mydish.comments[1].author}}<span> {{mydish.comments[1].date | date }}</span></p>
-                </mat-list-item>
-                <mat-list-item>
-                    <p matLine>{{mydish.comments[2].comment}}</p>
-                    <p matLine>{{mydish.comments[2].rating}}<span> Stars</span></p>
-                    <p matLine>-- {{mydish.comments[2].author}}<span> {{mydish.comments[2].date | date }}</span></p>
-                </mat-list-item>
-                <mat-list-item>
-                    <p matLine>{{mydish.comments[3].comment}}</p>
-                    <p matLine>{{mydish.comments[3].rating}}<span> Stars</span></p>
-                    <p matLine>-- {{mydish.comments[3].author}}<span> {{mydish.comments[3].date | date }}</span></p>
-                </mat-list-item>
-                <mat-list-item>
-                    <p matLine>{{mydish.comments[4].comment}}</p>
-                    <p matLine>{{mydish.comments[4].rating}}<span> Stars</span></p>
-                    <p matLine>-- {{mydish.comments[4].author}}<span> {{mydish.comments[4].date | date }}</span></p>
-                </mat-list-item>
-                <mat-list-item *ngIf="cmm">
-                    <p matLine>{{cmm.comment}}</p>
-                    <p matLine>{{cmm.rating }}<span> Stars</span></p>
-                    <p matLine>-- {{cmm.name}}<span> {{Date | date}}</span></p>
-                </mat-list-item>
             </mat-list>
+
 
             <div class="form-size">
                 <form novalidate [formGroup]="rform" #fform="ngForm" (ngSubmit)="onsubmit()" class="fff">
                     <p>
                         <mat-form-field class="half-width">
-                            <input matInput type="text" formControlName="name" placeholder="Name" required>
-                            <mat-error *ngIf="formerrors.name">
-                                {{formerrors.name}}</mat-error>
+                            <input matInput type="text" formControlName="author" placeholder="Name" required>
+                            <mat-error *ngIf="formerrors.author">
+                                {{formerrors.author}}</mat-error>
                         </mat-form-field>
                     </p>
 

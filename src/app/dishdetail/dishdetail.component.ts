@@ -6,7 +6,8 @@ import { DishService } from '../services/dish.service';
 import { SafeResourceUrl } from '@angular/platform-browser';
 import { switchMap } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Comments } from '../shared/exercise';
+
+import { Comment } from '../shared/comment';
 
 
 
@@ -18,15 +19,16 @@ import { Comments } from '../shared/exercise';
 })
 
 export class DishdetailComponent implements OnInit {
-  Date = Date.now();
+
   mydish: Dish;
   dishIds: string[];
   prev: string;
   next: string;
   rform: FormGroup;
-  cmm: Comments;
+  cmm: Comment;
   Dishes: Dish[];
   errmsg: string;
+  dishcopy: Dish;
 
 
 
@@ -34,17 +36,15 @@ export class DishdetailComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private dishservice: DishService, private route: ActivatedRoute, private location: Location, @Inject('BaseURL') private BaseURL) {
     this.createform();
-
-
-
   }
+
   formerrors = {
-    'name': '',
+    'author': '',
     'rating': 5,
     'comment': ''
   };
   validationmessages = {
-    'name': {
+    'author': {
       'required': 'Author Name is required',
       'minlength': 'Author Name must be atleast 2 charater long',
       'maxlength': 'Author Name cannot be more than 25 characters long'
@@ -57,9 +57,9 @@ export class DishdetailComponent implements OnInit {
   };
   createform() {
     this.rform = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
+      author: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(25)]],
       comment: ['', Validators.required],
-      rating: [0]
+      rating: [5]
     });
     this.rform.valueChanges.subscribe(data => this.onvaluechanged(data));
     this.onvaluechanged();
@@ -96,10 +96,15 @@ export class DishdetailComponent implements OnInit {
   onsubmit() {
 
     this.cmm = this.rform.value;
+    this.cmm.date = new Date().toISOString();
+    console.log(this.cmm);
+    this.mydish.comments.push(this.cmm);
+    this.dishservice.putdish(this.dishcopy).subscribe(dish => { this.mydish = dish; this.dishcopy = dish }, emsg => { this.mydish = null; this.dishcopy = null; this.errmsg = <any>emsg })
     console.log(this.cmm);
     this.rform.reset(
       {
-        name: '',
+        author: '',
+        rating: 5,
         comment: ''
       }
     );
@@ -112,7 +117,7 @@ export class DishdetailComponent implements OnInit {
 
 
     this.dishservice.getdishids().subscribe(dishids => this.dishIds = dishids);
-    this.route.params.pipe(switchMap((params: Params) => this.dishservice.getdish(params['id']))).subscribe(dish => { this.mydish = dish; this.setprevnext(dish.id); }, emsg => this.errmsg = emsg);
+    this.route.params.pipe(switchMap((params: Params) => this.dishservice.getdish(params['id']))).subscribe(dish => { this.mydish = dish; this.dishcopy = dish; this.setprevnext(dish.id); }, emsg => this.errmsg = emsg);
   }
   setprevnext(dishid: string) {
     const index = this.dishIds.indexOf(dishid);
