@@ -8,7 +8,7 @@ import { switchMap } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Comment } from '../shared/comment';
-import { trigger, state, style, animate, transition } from '@angular/animations';
+import { visibility, expand, flyInOut } from '../animations/app.animation';
 
 
 
@@ -18,17 +18,9 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   templateUrl: './dishdetail.component.html',
   styleUrls: ['./dishdetail.component.scss'],
   animations: [
-    trigger('visibility', [
-      state('shown', style({
-        transform: 'scale(1.0)',
-        opacity: 1
-      })),
-      state('hidden', style({
-        transform: 'scale(0.5)',
-        opacity: 0
-      })),
-      transition('* => *', animate('0.4s ease-in-out'))
-    ])
+    visibility(),
+    expand(),
+    flyInOut()
   ]
 
 })
