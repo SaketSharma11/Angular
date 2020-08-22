@@ -1,7 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Feedback, Contacttype } from '../shared/feedback';
-import { flyInOut } from '../animations/app.animation';
+import { flyInOut, visibility } from '../animations/app.animation';
+import { FeedbackService } from '../services/feedback.service';
+import { baseURL } from '../shared/baseurl';
 
 @Component({
   selector: 'app-contact',
@@ -12,7 +14,7 @@ import { flyInOut } from '../animations/app.animation';
     'style': 'display:block;'
   },
   animations: [
-    flyInOut()
+    flyInOut(), visibility()
   ]
 })
 
@@ -20,9 +22,14 @@ export class ContactComponent implements OnInit {
 
   @ViewChild('fform') fbformdirective;
   feedbackform: FormGroup;
-  feedback: Feedback;
+  feedback: Feedback[];
+  fbform: Feedback[];
   contact = Contacttype;
-  constructor(private fb: FormBuilder) {
+  cerrmsg: string;
+  visibility = 'shown';
+
+
+  constructor(private fb: FormBuilder, private fbackservice: FeedbackService, @Inject('BaseURL') private BaseURL) {
     this.createForm();
   }
 
@@ -91,6 +98,14 @@ export class ContactComponent implements OnInit {
   onsubmit() {
     this.feedback = this.feedbackform.value;
     console.log(this.feedback);
+    this.visibility = 'hidden';
+
+    this.fbackservice.submitFeedback(this.feedback).subscribe(fbf => { this.fbform = fbf; }, emsg => this.cerrmsg = emsg);
+    setTimeout(() => {                           //<<<---using ()=> syntax
+      this.visibility = 'shown';
+      this.fbform = null;
+    }, 5000);
+    console.log(this.fbform);
     this.feedbackform.reset(
       {
         firstname: '',
@@ -103,6 +118,7 @@ export class ContactComponent implements OnInit {
       }
     );
     this.fbformdirective.resetForm();
+
   }
 
 }

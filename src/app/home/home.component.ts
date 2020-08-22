@@ -5,7 +5,7 @@ import { Promotion } from '../shared/promotion';
 import { PromotionService } from '../services/promotion.service';
 import { DishService } from '../services/dish.service';
 import { Leader } from '../shared/leader';
-import { LEADERS } from '../shared/leaders';
+
 import { LeaderService } from '../services/leader.service';
 import { flyInOut, expand } from '../animations/app.animation';
 
@@ -26,14 +26,16 @@ import { flyInOut, expand } from '../animations/app.animation';
 export class HomeComponent implements OnInit {
   dish: Dish;
   disherrmsg: string;
+  leadererrmsg: string;
+  promotionerrmsg: string;
   leader: Leader;
   promotion: Promotion;
   constructor(private dishservice: DishService, private promotionservice: PromotionService, private leaderservice: LeaderService, @Inject('BaseURL') private baseURL) { }
 
   ngOnInit(): void {
     this.dishservice.getfeatureddish().subscribe(dish => this.dish = dish, emsg => this.disherrmsg = emsg);
-    this.promotionservice.getfeaturedpromotion().subscribe(promotion => this.promotion = promotion);
-    this.leaderservice.getleader().subscribe(leader => this.leader = leader);
+    this.promotionservice.getfeaturedpromotion().subscribe(promotion => this.promotion = promotion, emsg => this.promotionerrmsg = emsg);
+    this.leaderservice.getleader().subscribe(leader => this.leader = leader, emsg => this.leadererrmsg = emsg);
   }
 
 

@@ -12,6 +12,7 @@ export function visibility() {
         transition('* => *', animate('0.4s ease-in-out'))
     ])
 }
+
 export function flyInOut() {
     return trigger('flyInOut', [state('*', style({ opacity: 1, transform: 'translateX(0)' })),
     transition(':enter', [
